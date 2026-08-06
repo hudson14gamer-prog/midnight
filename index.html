@@ -277,5 +277,14 @@
       <script src="storage/js/cloak.js"></script>
       <script src="storage/js/theme.js"></script>
       <script src="storage/js/cookie.js"></script>
+      <audio id="bgmusic" src="https://files.catbox.moe/yrsaxu.mp3"></audio>
+
+<script>
+window.addEventListener("load", () => {
+    const audio = document.getElementById("bgmusic");
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+});
+</script>
   </body>
 </html>
