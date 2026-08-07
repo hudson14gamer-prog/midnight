@@ -277,5 +277,34 @@
       <script src="storage/js/cloak.js"></script>
       <script src="storage/js/theme.js"></script>
       <script src="storage/js/cookie.js"></script>
+      <script>
+window.addEventListener("load", () => {
+    const soundTab = window.open("", "midnightSound");
+
+    if (!soundTab) return;
+
+    soundTab.document.open();
+    soundTab.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Sound | midnight</title>
+        </head>
+        <body>
+            <audio id="sound" autoplay loop>
+                <source src="https://files.catbox.moe/yrsaxu.mp3" type="audio/mpeg">
+            </audio>
+
+            <script>
+                const audio = document.getElementById("sound");
+                audio.volume = 0.5;
+                audio.play().catch(() => {});
+            <\/script>
+        </body>
+        </html>
+    `);
+    soundTab.document.close();
+});
+</script>
   </body>
 </html>
