@@ -1,86 +1,42 @@
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FN7LEVWXD"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag(){
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'G-7FN7LEVWXD');
-    </script>
-
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link
-        rel="shortcut icon"
-        href="/images/ico.ico"
-        type="image/x-icon"
-    >
+    <title>Midnight — Access Restricted</title>
 
-    <link
-        rel="stylesheet"
-        href="/storage/css/index.css"
-    >
-
-    <title>Midnight</title>
-
-
-    <meta
-        name="description"
-        content="500+ unblocked games"
-    >
-
-    <meta
-        property="og:site_name"
-        content="midnight"
-    >
-
-    <meta
-        property="og:title"
-        content="midnight"
-    >
-
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        property="og:description"
-        content="500+ unblocked games"
-    >
-
-
-    <!-- EMAILJS -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-
-    <!-- EMAIL VERIFICATION SCREEN -->
+    <link rel="icon"
+          type="image/x-icon"
+          href="/images/ico.ico">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
-        #passwordScreen {
-            position: fixed;
-            inset: 0;
-            z-index: 99999999;
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        body {
+            overflow: hidden;
 
-            background: #080808;
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    #171717 0%,
+                    #0a0a0a 48%,
+                    #020202 100%
+                );
+
             color: white;
 
             font-family:
@@ -88,2577 +44,340 @@
                 Helvetica,
                 sans-serif;
 
-            transition:
-                opacity 0.45s ease,
-                visibility 0.45s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            user-select: none;
         }
 
+        body::before {
+            content: "";
 
-        #passwordScreen.hidden {
-            opacity: 0;
-            visibility: hidden;
+            position: fixed;
+            inset: 0;
+
+            opacity: 0.07;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.08) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.08) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
             pointer-events: none;
         }
 
+        .shutdown-box {
+            position: relative;
 
-        #passwordBox {
             width: min(
-                440px,
-                calc(100vw - 40px)
+                720px,
+                calc(100% - 40px)
             );
 
-            padding: 38px 35px;
+            padding: 48px 42px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111111,
+                    #080808
+                );
+
+            border: 1px solid #292929;
+            border-radius: 12px;
 
             text-align: center;
 
-            background:
-                rgba(20, 20, 20, 0.92);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.08);
-
-            border-radius: 16px;
-
             box-shadow:
-                0 20px 70px
-                rgba(0, 0, 0, 0.55);
+                0 30px 100px rgba(0,0,0,0.9),
+                0 0 0 1px rgba(255,255,255,0.02);
 
-            box-sizing: border-box;
+            animation:
+                appear 0.7s ease-out;
         }
 
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(15px)
+                    scale(0.97);
+            }
 
-        #passwordBox h1 {
-            margin:
-                0 0 9px;
-
-            font-size: 28px;
-            font-weight: 700;
-
-            letter-spacing:
-                -0.5px;
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
         }
 
+        .lock {
+            width: 82px;
+            height: 82px;
 
-        #passwordBox p {
-            margin:
-                0 0 25px;
+            margin: 0 auto 26px;
 
-            color:
-                rgba(255, 255, 255, 0.5);
-
-            font-size: 14px;
-        }
-
-
-        /* EMAIL SECTION */
-
-        #emailSection {
-            display: block;
-        }
-
-
-        #emailSection.hide {
-            display: none;
-        }
-
-
-        #emailInput {
-            width: 100%;
-            height: 50px;
-
-            padding:
-                0 16px;
-
-            box-sizing: border-box;
-
-            background:
-                rgba(255, 255, 255, 0.055);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.12);
-
-            border-radius: 10px;
-
-            outline: none;
-
-            color: white;
-
-            text-align: center;
-
-            font-size: 15px;
-
-            transition:
-                border-color 0.2s ease,
-                background 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-
-        #emailInput::placeholder {
-            color:
-                rgba(255, 255, 255, 0.3);
-        }
-
-
-        #emailInput:focus {
-            background:
-                rgba(255, 255, 255, 0.08);
-
-            border-color:
-                rgba(255, 255, 255, 0.3);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(255, 255, 255, 0.04);
-        }
-
-
-        /* CODE SECTION */
-
-        #codeSection {
-            display: none;
-        }
-
-
-        #codeSection.show {
-            display: block;
-        }
-
-
-        #codeDescription {
-            word-break: break-word;
-        }
-
-
-        #codeInputs {
             display: flex;
-
+            align-items: center;
             justify-content: center;
 
-            gap: 8px;
+            border-radius: 50%;
 
-            margin:
-                4px 0 18px;
-        }
+            background: #130606;
 
+            border: 2px solid #850000;
 
-        .codeInput {
-            width: 48px;
-            height: 56px;
-
-            box-sizing: border-box;
-
-            background:
-                rgba(255, 255, 255, 0.055);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.12);
-
-            border-radius: 10px;
-
-            outline: none;
-
-            color: white;
-
-            text-align: center;
-
-            font-size: 22px;
-
-            font-weight: 700;
-
-            transition:
-                border-color 0.2s ease,
-                background 0.2s ease,
-                box-shadow 0.2s ease,
-                transform 0.15s ease;
-        }
-
-
-        .codeInput:focus {
-            background:
-                rgba(255, 255, 255, 0.08);
-
-            border-color:
-                rgba(255, 255, 255, 0.35);
+            font-size: 36px;
 
             box-shadow:
-                0 0 0 3px
-                rgba(255, 255, 255, 0.04);
-
-            transform:
-                translateY(-1px);
+                0 0 35px rgba(180,0,0,0.15);
         }
 
+        h1 {
+            margin: 0 0 12px;
 
-        .codeInput.error {
-            border-color:
-                #ff5c5c;
+            font-size: clamp(
+                26px,
+                5vw,
+                38px
+            );
 
-            background:
-                rgba(255, 92, 92, 0.08);
+            font-weight: 800;
+
+            letter-spacing: -1px;
         }
 
+        .warning {
+            margin-bottom: 25px;
 
-        #codeStatus {
-            min-height: 18px;
+            color: #d00000;
 
-            margin:
-                0 0 14px;
+            font-size: 11px;
 
-            color:
-                rgba(255, 255, 255, 0.4);
+            font-weight: 800;
 
-            font-size: 12px;
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
+        .message {
+            max-width: 570px;
 
-        /* BUTTON */
+            margin: 0 auto 25px;
 
-        #passwordButton {
-            width: 100%;
-            height: 48px;
+            color: #a5a5a5;
 
-            margin-top: 12px;
+            font-size: 14px;
 
-            border: none;
-
-            border-radius: 10px;
-
-            background: white;
-            color: black;
-
-            font-size: 15px;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition:
-                transform 0.15s ease,
-                opacity 0.15s ease;
+            line-height: 1.7;
         }
 
+        .reason {
+            padding: 20px;
 
-        #passwordButton:hover {
-            opacity: 0.88;
-        }
+            margin-top: 24px;
 
+            background: #0c0c0c;
 
-        #passwordButton:active {
-            transform:
-                scale(0.98);
-        }
+            border: 1px solid #252525;
+            border-left: 3px solid #a00000;
 
+            border-radius: 6px;
 
-        #passwordButton:disabled {
-            opacity: 0.5;
-            cursor: default;
-        }
+            color: #999;
 
-
-        /* ERROR */
-
-        #passwordError {
-            min-height: 18px;
-
-            margin-top: 13px;
-
-            color: #ff5c5c;
+            text-align: left;
 
             font-size: 13px;
 
-            opacity: 0;
-
-            transition:
-                opacity 0.2s ease;
+            line-height: 1.7;
         }
 
+        .reason-title {
+            display: block;
 
-        #passwordError.show {
-            opacity: 1;
+            margin-bottom: 8px;
+
+            color: #d00000;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
         }
 
-
-        /* SECONDARY BUTTONS */
-
-        #resendButton,
-        #backButton {
-            border: none;
-
-            background: transparent;
-
-            color:
-                rgba(255, 255, 255, 0.45);
-
-            font-size: 12px;
-
-            cursor: pointer;
-
-            transition:
-                color 0.2s ease;
+        .reason strong {
+            color: #e5e5e5;
         }
 
-
-        #resendButton:hover,
-        #backButton:hover {
-            color: white;
-        }
-
-
-        #resendButton:disabled {
-            opacity: 0.35;
-            cursor: default;
-        }
-
-
-        #codeActions {
+        .status {
             display: flex;
 
+            justify-content: center;
             align-items: center;
 
-            justify-content: center;
+            gap: 8px;
 
-            gap: 14px;
+            margin-top: 25px;
 
-            margin-top: 5px;
+            color: #666;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
         }
 
+        .status-dot {
+            width: 7px;
+            height: 7px;
 
-        @media (max-width: 420px) {
+            border-radius: 50%;
 
-            #passwordBox {
-                padding:
-                    32px 20px;
-            }
+            background: #b00000;
 
+            box-shadow:
+                0 0 10px rgba(200,0,0,0.7);
 
-            #codeInputs {
-                gap: 5px;
-            }
-
-
-            .codeInput {
-                width: 43px;
-                height: 52px;
-            }
-
+            animation:
+                pulse 1.5s infinite;
         }
 
-
-        /* SHAKE */
-
-        @keyframes passwordShake {
-
+        @keyframes pulse {
             0%,
             100% {
-                transform:
-                    translateX(0);
+                opacity: 1;
             }
 
-            25% {
-                transform:
-                    translateX(-7px);
+            50% {
+                opacity: 0.3;
             }
-
-            75% {
-                transform:
-                    translateX(7px);
-            }
-
         }
 
+        .parody {
+            margin-top: 28px;
 
-        #passwordBox.shake {
-            animation:
-                passwordShake 0.25s ease;
+            color: #454545;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
         }
 
+        .case {
+            margin-top: 12px;
+
+            color: #292929;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .shutdown-box {
+                padding: 35px 23px;
+            }
+
+            .lock {
+                width: 68px;
+                height: 68px;
+
+                font-size: 30px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .message {
+                font-size: 13px;
+            }
+
+            .reason {
+                font-size: 12px;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
+    <main class="shutdown-box">
 
-    <!-- EMAIL VERIFICATION GATE -->
-
-    <div id="passwordScreen">
-
-        <div id="passwordBox">
-
-
-            <!-- EMAIL -->
-
-            <div id="emailSection">
-
-                <h1>
-                    Verify Email
-                </h1>
-
-
-                <p>
-                    Enter your school email to continue
-                </p>
-
-
-                <input
-                    id="emailInput"
-                    type="email"
-                    placeholder="School email"
-                    autocomplete="email"
-                    spellcheck="false"
-                >
-
-
-                <button id="passwordButton">
-                    Send Code
-                </button>
-
-            </div>
-
-
-            <!-- CODE -->
-
-            <div id="codeSection">
-
-                <h1>
-                    Enter Code
-                </h1>
-
-
-                <p id="codeDescription">
-                    We sent a 6 digit code to your email
-                </p>
-
-
-                <div id="codeInputs">
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                        autocomplete="one-time-code"
-                    >
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                    >
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                    >
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                    >
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                    >
-
-                    <input
-                        class="codeInput"
-                        type="text"
-                        inputmode="numeric"
-                        maxlength="1"
-                    >
-
-                </div>
-
-
-                <div id="codeStatus">
-                    Code expires in 10:00
-                </div>
-
-
-                <div id="codeActions">
-
-                    <button id="backButton">
-                        Change email
-                    </button>
-
-                    <button id="resendButton">
-                        Resend Code
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div id="passwordError">
-                Something went wrong
-            </div>
-
-
+        <div class="lock">
+            🔒
         </div>
 
-    </div>
-
-
-
-    <!-- UPDATE POPUP -->
-
-    <div id="blackout"></div>
-
-    <div id="updPopup">
-
-        <img
-            src="/images/other/v10image.jpg"
-            style="width: 90%;"
-        >
-
-        <br><br>
-
-        <h2
-            style="
-                font-size: 28px;
-                text-decoration: underline;
-            "
-        >
-            version 10 / patch notes
-        </h2>
-
-
-        <div id="updContent">
-
-            <ul style="text-align: left;">
-
-                <li>
-
-                    offline mode
-
-                    <ul>
-
-                        <li>
-                            download 200+ games from the site by clicking
-                            the download button to the left of them
-                        </li>
-
-                        <li>
-                            after one game is downloaded, loading the site
-                            without an internet connection will send you
-                            to an offline version on the site where you
-                            can access downloaded games
-                        </li>
-
-                        <li>
-                            supports ruffle/flash + works seamlessly with
-                            compatible games
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-
-                    added 132 games
-
-                    <ul>
-
-                        <li>
-                            sega genesis: comix zone, ecco the dolphin,
-                            gunstar heroes, phantasy star iv, ranger x,
-                            ristar, shining force, shinobi iii,
-                            sonic the hedgehog, sonic the hedgehog 2,
-                            streets of rage 2, vectorman, vectorman 2
-                        </li>
-
-                        <li>
-                            game boy: kirby’s dreamland 2,
-                            link’s awakening dx, metroid ii,
-                            super mario land 2, warioland ii,
-                            castlevania: aria of sorrow,
-                            final fantasy tactics advance, drill dozer,
-                            pokemon yellow
-                        </li>
-
-                        <li>
-                            nes: battle toads, castlevania iii, contra,
-                            duck tales, kid icarus, mega man 2,
-                            ninja gaiden, mike tyson’s punch out
-                        </li>
-
-                        <li>
-                            snes: chrono trigger, contra iii,
-                            donkey kong country 3, earthbound,
-                            final fantasy iv, f-zero, super metroid,
-                            illusion of gaia
-                        </li>
-
-                        <li>
-                            n64: banjo tooie, harvest moon 64,
-                            jet force gemini, mystical ninja,
-                            turok dinosaur hunter, yoshi’s story
-                        </li>
-
-                        <li>
-                            nintendo ds: advance wars: days of ruin,
-                            castlevania: dawn of sorrow,
-                            castlevania: order of ecclesia,
-                            mario and luigi: partners in time
-                        </li>
-
-                        <li>
-                            flash games: abuda the alien,
-                            battle beavers, controlcraft 2, age of war,
-                            age of war 2, amorphous, bubble spinner,
-                            crush the castle, crush the castle 2,
-                            epic battle fantasy,
-                            epic battle fantasy 2,
-                            epic battle fantasy 3,
-                            fancy pants adventure 3,
-                            flood runner 2, flood runner 3,
-                            dragon boy 2, neon rider, pandemic 2,
-                            stick war, stick war 2, ultimate flash sonic,
-                            zombocalpyse, zombotron, zombotron 2,
-                            three line, bike champ, bike champ 2,
-                            corporation inc, shop empire fable,
-                            wubzzy’s amazing adventure
-                        </li>
-
-                        <li>
-                            nitrome games: canopy, cave chaos,
-                            changetype(), cheese dreams, chisel,
-                            chisel 2, ditto, feed me, final ninja,
-                            frost bite, frost bite 2, ice breaker,
-                            mutiny, nitrome must die, oodlegobs,
-                            super treadmill, swindler,
-                            test subject arena,
-                            test subject complete, twin shot,
-                            twin shot 2
-                        </li>
-
-                        <li>
-                            flipline games: cactus mccoy,
-                            cactus mccoy 2, papa louie,
-                            papa louie 2, papa louie 3,
-                            steak and jake,
-                            steak and jake: midnight march
-                        </li>
-
-                        <li>
-                            other games: backrooms 2d, basket random,
-                            csgo clicker, doom, funny shooter 2,
-                            gun fest, infinite craft,
-                            lows adventures 2, pako highway,
-                            recoil, run 3 plus, slope city,
-                            state io, sudoku, superhero drop,
-                            balloon run, crazy tunnel 3d,
-                            eaglercraft 1.8, geometry dash sky,
-                            gold digger frvr, hexgl,
-                            house of hazards, pick crafter,
-                            precision client, subway runner,
-                            xx142-b2.exe
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-
-                    added 4 apps:
-
-                    <ul>
-
-                        <li>
-                            calculator: a simple calculator, allowing you
-                            to perform simple addition, subtraction,
-                            multiplication and division
-                        </li>
-
-                        <li>
-                            etch a sketch: create digital pixel drawings -
-                            mimicking the experience of an etch-a-sketch
-                            with quality of life features
-                        </li>
-
-                        <li>
-                            zip opener: directly upload and view/download
-                            individual files inside a zip archive
-                        </li>
-
-                        <li>
-                            godoblocks: a mimick of the 2005 roblox beta
-                            era - recreated entirely in godot
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-                    fixed friday night funkin & drift hunters
-                </li>
-
-
-                <br>
-
-
-                <li>
-
-                    settings overhaul
-
-                    <ul>
-
-                        <li>
-
-                            new data management section
-
-                            <ul>
-
-                                <li>
-                                    import/export data into save files,
-                                    allowing for transfer over multiple
-                                    sites
-                                </li>
-
-                                <li>
-                                    clear all data off the site with the
-                                    clear data button
-                                </li>
-
-                            </ul>
-
-                        </li>
-
-
-                        <li>
-
-                            new panic mode
-
-                            <ul>
-
-                                <li>
-                                    customise a panic key
-                                    (defaults to ctrl+shift+p)
-                                </li>
-
-                                <li>
-                                    customise a panic url
-                                    (defaults to https://www.desmos.com/scientific)
-                                </li>
-
-                                <li>
-                                    perform the shortcut on any page to
-                                    instantly delete all contents of the
-                                    site and redirect to the panic url
-                                </li>
-
-                            </ul>
-
-                        </li>
-
-
-                        <li>
-
-                            custom theme updates
-
-                            <ul>
-
-                                <li>
-                                    added ability to export and import
-                                    custom themes directly into the site,
-                                    allowing for ease of access switching
-                                    + sharability
-                                </li>
-
-                                <li>
-                                    custom themes now do not require a
-                                    refresh of the page every time
-                                </li>
-
-                            </ul>
-
-                        </li>
-
-
-                        <li>
-                            new theme: ghostly - an abandoned town,
-                            said to be haunted by spirits lurking within
-                        </li>
-
-                        <li>
-                            added open games in same tab setting
-                        </li>
-
-                        <li>
-                            fixed tab cloaking not working on lots of pages,
-                            now works globally
-                        </li>
-
-                        <li>
-                            tab cloak and resetting auto applies now with
-                            page refresh
-                        </li>
-
-                        <li>
-                            removed tooltips to condense space
-                        </li>
-
-                        <li>
-                            significantly improved animation
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-
-                    seraphim - mobile update
-
-                    <ul>
-
-                        <li>
-                            mobile version is now detachable from seraphim
-                            and can be hosted separately
-                        </li>
-
-                        <li>
-                            converted games and apps from buttons to app
-                            icons for a more unique interface
-                        </li>
-
-                        <li>
-                            blurred all theme backgrounds to help contrast
-                            content more on smaller screens
-                        </li>
-
-                        <li>
-                            now integratable with ios! open seraphim in
-                            safari > more > add to home page
-                        </li>
-
-                        <li>
-                            setting bars now stack instead of appearing
-                            next to each other
-                        </li>
-
-                        <li>
-                            games are now sorted in alphabetical order
-                        </li>
-
-                        <li>
-                            custom themes are now compatible with
-                            mobile mode
-                        </li>
-
-                        <li>
-                            mobile now uses new and consolidated stylesheet
-                        </li>
-
-                        <li>
-                            scripts on page now execute in one instead of
-                            being fragmented
-                        </li>
-
-                        <li>
-                            removed games/apps opening in a blank tab
-                        </li>
-
-                        <li>
-                            adjusted meta tags to fit the site
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-
-                    updates page
-
-                    <ul>
-
-                        <li>
-                            update log page is now a dropdown menu instead
-                            of a long page - scales down from version 10
-                            all the way to version 1
-                        </li>
-
-                        <li>
-                            improved animation on page load
-                        </li>
-
-                        <li>
-                            fixed header glowing bug on page, making a weird
-                            background effect
-                        </li>
-
-                    </ul>
-
-                </li>
-
-
-                <li>
-
-                    other changes
-
-                    <ul>
-
-                        <li>
-                            homepage now has dedicated big settings button
-                        </li>
-
-                        <li>
-                            shrunk down app size slightly
-                        </li>
-
-                        <li>
-                            added update popup for whenever there is a new
-                            update - shown on the homepage
-                        </li>
-
-                        <li>
-                            404 page now has a previous page button
-                        </li>
-
-                        <li>
-                            fixed errors with 404 page styling, images
-                            and fonts
-                        </li>
-
-                        <li>
-                            fixed errors with 404 linkbar links redirecting
-                            to wrong parts of the site
-                        </li>
-
-                        <li>
-                            mobile users are now not automatically
-                            redirected to the mobile friendly version of
-                            the site on the homepage
-                        </li>
-
-                        <li>
-                            background image bandwidth has been
-                            significantly downgraded by 50-90%
-                        </li>
-
-                        <li>
-                            game thumbnails total bandwidth reduced
-                            significantly (19.2mb > 2.2mb)
-                        </li>
-
-                        <li>
-                            favicon is now improved to give a more rounded
-                            design
-                        </li>
-
-                        <li>
-                            fixed homepage size on mozilla browsers
-                        </li>
-
-                        <li>
-                            star/cross icon is now an image icon instead of
-                            using unicode characters
-                        </li>
-
-                        <li>
-                            themes.css now is used in place of having all
-                            stylesheets have different schemes
-                        </li>
-
-                        <li>
-                            polished readme file, adding more content to it
-                            and removing unnecessary information
-                        </li>
-
-                        <li>
-                            changed placeholder image (displays when there
-                            is no current thumbnail for a game)
-                        </li>
-
-                        <li>
-                            css stylesheets have been renamed to make it
-                            easier to sort through
-                        </li>
-
-                    </ul>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div id="updConfirmFrame">
-
-            <button id="updConfirm">
-                okay
-            </button>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- MAIN CONTENT -->
-
-    <div class="content-side">
-
-        <h1 class="typewriter">
-            <span id="cursor"></span>
+        <h1>
+            THIS WEBSITE HAS BEEN SEIZED
         </h1>
 
+        <div class="warning">
+            ACCESS RESTRICTED
+        </div>
 
-        <h2>
-            version 10 / release build
-        </h2>
+        <div class="message">
+            This website has been removed from public
+            access pending an investigation into
+            suspected unlawful network activity.
+        </div>
 
+        <div class="reason">
 
-        <br>
+            <span class="reason-title">
+                Reason for removal
+            </span>
 
+            <strong>
+                Suspected unauthorized network activity
+            </strong>
 
-        <div class="button-container">
+            <br>
 
+            The website has been associated with
+            suspected distributed denial-of-service
+            (DDoS) attacks, malicious network traffic,
+            attempted service disruption, and other
+            prohibited online activity.
 
-            <div
-                class="gamesbutton"
-                onclick="window.location='games/index.html';"
-            >
+            <br><br>
 
-                <img
-                    src="images/other/controller.png"
-                >
-
-                <div class="button-text">
-
-                    <p>
-                        games
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="gamesbutton"
-                onclick="window.location='apps/index.html';"
-            >
-
-                <a href="apps/index.html">
-
-                    <img
-                        src="images/other/apps.png"
-                    >
-
-                </a>
-
-
-                <div class="button-text">
-
-                    <p>
-                        apps
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="gamesbutton"
-                onclick="window.location='settings.html';"
-            >
-
-                <a href="settings.html">
-
-                    <img
-                        src="images/other/settings.png"
-                    >
-
-                </a>
-
-
-                <div class="button-text">
-
-                    <p>
-                        settings
-                    </p>
-
-                </div>
-
-            </div>
-
+            Access to the website has therefore been
+            suspended while the matter is reviewed.
 
         </div>
 
-
-        <br>
-
-
-        <p class="linkp">
-
-            <a href="/seraphim/index.html">
-                mobile
-            </a>
-
-            •
-
-            <a href="host.html">
-                rehost
-            </a>
-
-            •
-
-            <a id="openBlankLink">
-                open blank
-            </a>
-
-        </p>
-
-
-        <p class="linkp">
-
-            <a
-                href="https://discord.gg/4FFK4xWAPH"
-                target="_blank"
-            >
-                discord
-            </a>
-
-            •
-
-            <a href="updatelog.html">
-                update log
-            </a>
-
-            •
-
-            <a
-                href="https://au.hudson.com"
-                target="_blank"
-            >
-                hudson
-            </a>
-
-        </p>
-
-
-        <br>
-
-
-        <a
-            href="https://au.hudson.com/"
-            target="_blank"
-            style="text-decoration: none;"
-        >
-            ˗ˏˋwebsite made by hudson (weevy) chase janse (south2kw1) ´ˎ˗
-        </a>
-
-    </div>
-
-
-
-    <!-- EMAIL VERIFICATION LOGIC -->
-
-    <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-
-                /* =====================================
-                   EMAILJS SETTINGS
-                ===================================== */
-
-                const EMAILJS_PUBLIC_KEY =
-                    "niJY28BM-OFMrbhGl";
-
-                const EMAILJS_SERVICE_ID =
-                    "service_8g7erzy";
-
-                const EMAILJS_TEMPLATE_ID =
-                    "template_pslge5b";
-
-
-                /* =====================================
-                   ALLOWED EMAILS
-                ===================================== */
-
-                const ALLOWED_EMAILS = [
-
-                    "hudson.stokes2@student.education.wa.edu.au",
-
-                    "Mahasuryateja.majji@student.education.wa.edu.au"
-
-                ];
-
-
-                /* =====================================
-                   ELEMENTS
-                ===================================== */
-
-                const passwordScreen =
-                    document.getElementById(
-                        "passwordScreen"
-                    );
-
-                const passwordBox =
-                    document.getElementById(
-                        "passwordBox"
-                    );
-
-                const emailSection =
-                    document.getElementById(
-                        "emailSection"
-                    );
-
-                const codeSection =
-                    document.getElementById(
-                        "codeSection"
-                    );
-
-                const emailInput =
-                    document.getElementById(
-                        "emailInput"
-                    );
-
-                const passwordButton =
-                    document.getElementById(
-                        "passwordButton"
-                    );
-
-                const passwordError =
-                    document.getElementById(
-                        "passwordError"
-                    );
-
-                const codeDescription =
-                    document.getElementById(
-                        "codeDescription"
-                    );
-
-                const codeStatus =
-                    document.getElementById(
-                        "codeStatus"
-                    );
-
-                const resendButton =
-                    document.getElementById(
-                        "resendButton"
-                    );
-
-                const backButton =
-                    document.getElementById(
-                        "backButton"
-                    );
-
-                const codeInputs =
-                    Array.from(
-                        document.querySelectorAll(
-                            ".codeInput"
-                        )
-                    );
-
-
-                /* =====================================
-                   24 HOUR LOGIN
-                ===================================== */
-
-                const LOGIN_DURATION =
-                    24 * 60 * 60 * 1000;
-
-
-                function hasValidLogin() {
-
-                    const savedLogin =
-                        localStorage.getItem(
-                            "midnightVerified"
-                        );
-
-
-                    if (!savedLogin) {
-                        return false;
-                    }
-
-
-                    const loginTime =
-                        Number(savedLogin);
-
-
-                    if (
-                        Number.isNaN(loginTime)
-                    ) {
-
-                        localStorage.removeItem(
-                            "midnightVerified"
-                        );
-
-                        return false;
-
-                    }
-
-
-                    const elapsed =
-                        Date.now() - loginTime;
-
-
-                    if (
-                        elapsed >= LOGIN_DURATION
-                    ) {
-
-                        localStorage.removeItem(
-                            "midnightVerified"
-                        );
-
-                        return false;
-
-                    }
-
-
-                    return true;
-
-                }
-
-
-                /* =====================================
-                   SKIP LOGIN
-                ===================================== */
-
-                if (hasValidLogin()) {
-
-                    passwordScreen.remove();
-
-                    return;
-
-                }
-
-
-                /* =====================================
-                   EMAILJS INIT
-                ===================================== */
-
-                emailjs.init({
-
-                    publicKey:
-                        EMAILJS_PUBLIC_KEY
-
-                });
-
-
-                /* =====================================
-                   VARIABLES
-                ===================================== */
-
-                let currentCode = "";
-
-                let currentEmail = "";
-
-                let codeExpiresAt = 0;
-
-                let resendCooldown = false;
-
-
-                /* =====================================
-                   EMAIL FOCUS
-                ===================================== */
-
-                emailInput.focus();
-
-
-                /* =====================================
-                   ERROR
-                ===================================== */
-
-                function showError(message) {
-
-                    passwordError.textContent =
-                        message;
-
-                    passwordError.classList.add(
-                        "show"
-                    );
-
-
-                    passwordBox.classList.remove(
-                        "shake"
-                    );
-
-
-                    void passwordBox.offsetWidth;
-
-
-                    passwordBox.classList.add(
-                        "shake"
-                    );
-
-                }
-
-
-                function clearError() {
-
-                    passwordError.textContent = "";
-
-                    passwordError.classList.remove(
-                        "show"
-                    );
-
-                }
-
-
-                /* =====================================
-                   RANDOM CODE
-                ===================================== */
-
-                function generateCode() {
-
-                    return Math.floor(
-                        100000 +
-                        Math.random() * 900000
-                    ).toString();
-
-                }
-
-
-                /* =====================================
-                   SEND EMAIL
-                ===================================== */
-
-                async function sendCode() {
-
-                    clearError();
-
-
-                    const email =
-                        emailInput.value
-                            .trim()
-                            .toLowerCase();
-
-
-                    const allowed =
-                        ALLOWED_EMAILS.some(
-                            function (allowedEmail) {
-
-                                return (
-                                    allowedEmail.toLowerCase() ===
-                                    email
-                                );
-
-                            }
-                        );
-
-
-                    if (!allowed) {
-
-                        showError(
-                            "That email is not allowed."
-                        );
-
-                        emailInput.focus();
-
-                        return;
-
-                    }
-
-
-                    passwordButton.disabled =
-                        true;
-
-                    passwordButton.textContent =
-                        "Sending...";
-
-
-                    currentEmail =
-                        email;
-
-
-                    currentCode =
-                        generateCode();
-
-
-                    codeExpiresAt =
-                        Date.now() +
-                        (10 * 60 * 1000);
-
-
-                    try {
-
-                        await emailjs.send(
-
-                            EMAILJS_SERVICE_ID,
-
-                            EMAILJS_TEMPLATE_ID,
-
-                            {
-
-                                to_email:
-                                    currentEmail,
-
-                                code:
-                                    currentCode
-
-                            }
-
-                        );
-
-
-                        emailSection.classList.add(
-                            "hide"
-                        );
-
-
-                        codeSection.classList.add(
-                            "show"
-                        );
-
-
-                        codeDescription.textContent =
-                            "We sent a 6 digit code to " +
-                            currentEmail;
-
-
-                        codeInputs.forEach(
-                            function (input) {
-
-                                input.value = "";
-
-                                input.classList.remove(
-                                    "error"
-                                );
-
-                            }
-                        );
-
-
-                        codeInputs[0].focus();
-
-
-                        startExpiryTimer();
-
-
-                    } catch (error) {
-
-                        console.error(
-                            "EmailJS error:",
-                            error
-                        );
-
-
-                        currentCode = "";
-
-
-                        showError(
-                            "Couldn't send the code. Try again."
-                        );
-
-                    }
-
-
-                    passwordButton.disabled =
-                        false;
-
-                    passwordButton.textContent =
-                        "Send Code";
-
-                }
-
-
-                /* =====================================
-                   EXPIRY TIMER
-                ===================================== */
-
-                function startExpiryTimer() {
-
-                    function updateTimer() {
-
-                        if (!currentCode) {
-                            return;
-                        }
-
-
-                        const remaining =
-                            codeExpiresAt -
-                            Date.now();
-
-
-                        if (remaining <= 0) {
-
-                            currentCode = "";
-
-
-                            codeStatus.textContent =
-                                "Code expired. Send a new one.";
-
-
-                            return;
-
-                        }
-
-
-                        const totalSeconds =
-                            Math.ceil(
-                                remaining / 1000
-                            );
-
-
-                        const minutes =
-                            Math.floor(
-                                totalSeconds / 60
-                            );
-
-
-                        const seconds =
-                            totalSeconds % 60;
-
-
-                        codeStatus.textContent =
-                            "Code expires in " +
-                            minutes +
-                            ":" +
-                            seconds
-                                .toString()
-                                .padStart(
-                                    2,
-                                    "0"
-                                );
-
-
-                        setTimeout(
-                            updateTimer,
-                            1000
-                        );
-
-                    }
-
-
-                    updateTimer();
-
-                }
-
-
-                /* =====================================
-                   UNLOCK
-                ===================================== */
-
-                function unlockSite() {
-
-                    clearError();
-
-
-                    /*
-                       SAVE LOGIN TIME
-
-                       24 HOURS FROM THIS MOMENT
-                    */
-
-                    localStorage.setItem(
-                        "midnightVerified",
-                        Date.now().toString()
-                    );
-
-
-                    passwordScreen.classList.add(
-                        "hidden"
-                    );
-
-
-                    setTimeout(
-                        function () {
-
-                            passwordScreen.remove();
-
-                        },
-                        500
-                    );
-
-                }
-
-
-                /* =====================================
-                   VERIFY
-                ===================================== */
-
-                function verifyCode() {
-
-                    const enteredCode =
-                        codeInputs
-                            .map(
-                                function (input) {
-                                    return input.value;
-                                }
-                            )
-                            .join("");
-
-
-                    if (
-                        enteredCode.length !== 6
-                    ) {
-                        return;
-                    }
-
-
-                    /* EXPIRED */
-
-                    if (
-                        !currentCode ||
-                        Date.now() >
-                        codeExpiresAt
-                    ) {
-
-                        codeInputs.forEach(
-                            function (input) {
-
-                                input.classList.add(
-                                    "error"
-                                );
-
-                            }
-                        );
-
-
-                        codeStatus.textContent =
-                            "This code has expired.";
-
-
-                        return;
-
-                    }
-
-
-                    /* CORRECT */
-
-                    if (
-                        enteredCode ===
-                        currentCode
-                    ) {
-
-                        unlockSite();
-
-                        return;
-
-                    }
-
-
-                    /* WRONG */
-
-                    codeInputs.forEach(
-                        function (input) {
-
-                            input.classList.add(
-                                "error"
-                            );
-
-                        }
-                    );
-
-
-                    codeStatus.textContent =
-                        "Incorrect code.";
-
-
-                    passwordBox.classList.remove(
-                        "shake"
-                    );
-
-
-                    void passwordBox.offsetWidth;
-
-
-                    passwordBox.classList.add(
-                        "shake"
-                    );
-
-
-                    setTimeout(
-                        function () {
-
-                            codeInputs.forEach(
-                                function (input) {
-
-                                    input.value = "";
-
-                                    input.classList.remove(
-                                        "error"
-                                    );
-
-                                }
-                            );
-
-
-                            codeInputs[0].focus();
-
-                        },
-                        300
-                    );
-
-                }
-
-
-                /* =====================================
-                   CODE BOXES
-                ===================================== */
-
-                codeInputs.forEach(
-                    function (input, index) {
-
-
-                        /* INPUT */
-
-                        input.addEventListener(
-                            "input",
-                            function () {
-
-                                input.value =
-                                    input.value.replace(
-                                        /[^0-9]/g,
-                                        ""
-                                    );
-
-
-                                input.classList.remove(
-                                    "error"
-                                );
-
-
-                                if (
-                                    input.value &&
-                                    index <
-                                    codeInputs.length - 1
-                                ) {
-
-                                    codeInputs[
-                                        index + 1
-                                    ].focus();
-
-                                }
-
-
-                                if (
-                                    codeInputs.every(
-                                        function (box) {
-
-                                            return (
-                                                box.value.length ===
-                                                1
-                                            );
-
-                                        }
-                                    )
-                                ) {
-
-                                    verifyCode();
-
-                                }
-
-                            }
-                        );
-
-
-                        /* KEYBOARD */
-
-                        input.addEventListener(
-                            "keydown",
-                            function (event) {
-
-
-                                /* BACKSPACE */
-
-                                if (
-                                    event.key ===
-                                    "Backspace" &&
-                                    !input.value &&
-                                    index > 0
-                                ) {
-
-                                    codeInputs[
-                                        index - 1
-                                    ].focus();
-
-                                }
-
-
-                                /* LEFT */
-
-                                if (
-                                    event.key ===
-                                    "ArrowLeft" &&
-                                    index > 0
-                                ) {
-
-                                    codeInputs[
-                                        index - 1
-                                    ].focus();
-
-                                }
-
-
-                                /* RIGHT */
-
-                                if (
-                                    event.key ===
-                                    "ArrowRight" &&
-                                    index <
-                                    codeInputs.length - 1
-                                ) {
-
-                                    codeInputs[
-                                        index + 1
-                                    ].focus();
-
-                                }
-
-                            }
-                        );
-
-
-                        /* PASTE */
-
-                        input.addEventListener(
-                            "paste",
-                            function (event) {
-
-                                event.preventDefault();
-
-
-                                const pasted =
-                                    (
-                                        event.clipboardData ||
-                                        window.clipboardData
-                                    )
-                                        .getData("text")
-                                        .replace(
-                                            /[^0-9]/g,
-                                            ""
-                                        )
-                                        .slice(
-                                            0,
-                                            6
-                                        );
-
-
-                                if (!pasted) {
-                                    return;
-                                }
-
-
-                                codeInputs.forEach(
-                                    function (box) {
-
-                                        box.value = "";
-
-                                    }
-                                );
-
-
-                                pasted
-                                    .split("")
-                                    .forEach(
-                                        function (
-                                            number,
-                                            i
-                                        ) {
-
-                                            if (
-                                                codeInputs[i]
-                                            ) {
-
-                                                codeInputs[i]
-                                                    .value =
-                                                    number;
-
-                                            }
-
-                                        }
-                                    );
-
-
-                                codeInputs[
-                                    Math.min(
-                                        pasted.length,
-                                        5
-                                    )
-                                ].focus();
-
-
-                                if (
-                                    pasted.length === 6
-                                ) {
-
-                                    verifyCode();
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
-
-
-                /* =====================================
-                   SEND BUTTON
-                ===================================== */
-
-                passwordButton.addEventListener(
-                    "click",
-                    sendCode
-                );
-
-
-                /* =====================================
-                   ENTER EMAIL
-                ===================================== */
-
-                emailInput.addEventListener(
-                    "keydown",
-                    function (event) {
-
-                        if (
-                            event.key === "Enter"
-                        ) {
-
-                            sendCode();
-
-                        }
-
-                    }
-                );
-
-
-                /* =====================================
-                   RESEND
-                ===================================== */
-
-                resendButton.addEventListener(
-                    "click",
-                    async function () {
-
-                        if (resendCooldown) {
-                            return;
-                        }
-
-
-                        resendCooldown = true;
-
-
-                        resendButton.disabled =
-                            true;
-
-
-                        resendButton.textContent =
-                            "Sending...";
-
-
-                        currentCode =
-                            generateCode();
-
-
-                        codeExpiresAt =
-                            Date.now() +
-                            (10 * 60 * 1000);
-
-
-                        try {
-
-                            await emailjs.send(
-
-                                EMAILJS_SERVICE_ID,
-
-                                EMAILJS_TEMPLATE_ID,
-
-                                {
-
-                                    to_email:
-                                        currentEmail,
-
-                                    code:
-                                        currentCode
-
-                                }
-
-                            );
-
-
-                            codeInputs.forEach(
-                                function (input) {
-
-                                    input.value = "";
-
-                                    input.classList.remove(
-                                        "error"
-                                    );
-
-                                }
-                            );
-
-
-                            codeStatus.textContent =
-                                "New code sent. Code expires in 10 minutes.";
-
-
-                            codeInputs[0].focus();
-
-
-                        } catch (error) {
-
-                            console.error(
-                                "EmailJS error:",
-                                error
-                            );
-
-
-                            codeStatus.textContent =
-                                "Couldn't send a new code.";
-
-                        }
-
-
-                        resendButton.textContent =
-                            "Resend Code";
-
-
-                        setTimeout(
-                            function () {
-
-                                resendCooldown =
-                                    false;
-
-                                resendButton.disabled =
-                                    false;
-
-                            },
-                            5000
-                        );
-
-                    }
-                );
-
-
-                /* =====================================
-                   CHANGE EMAIL
-                ===================================== */
-
-                backButton.addEventListener(
-                    "click",
-                    function () {
-
-                        currentCode = "";
-
-                        currentEmail = "";
-
-                        codeExpiresAt = 0;
-
-
-                        emailSection.classList.remove(
-                            "hide"
-                        );
-
-
-                        codeSection.classList.remove(
-                            "show"
-                        );
-
-
-                        codeInputs.forEach(
-                            function (input) {
-
-                                input.value = "";
-
-                                input.classList.remove(
-                                    "error"
-                                );
-
-                            }
-                        );
-
-
-                        codeStatus.textContent =
-                            "Code expires in 10:00";
-
-
-                        clearError();
-
-
-                        emailInput.focus();
-
-                    }
-                );
-
-            }
-        );
-
-    </script>
-
-
-
-    <!-- SERVICE WORKER -->
-
-    <script>
-
-        if ('serviceWorker' in navigator) {
-
-            window.addEventListener(
-                'load',
-                function() {
-
-                    navigator.serviceWorker
-                        .register(
-                            '/offline-worker.js'
-                        )
-                        .then(
-                            function(registration) {
-
-                                console.log(
-                                    'service worker initalised! scope:',
-                                    registration.scope
-                                );
-
-
-                                navigator.serviceWorker
-                                    .addEventListener(
-                                        'message',
-                                        function(event) {
-
-                                            if (
-                                                event.data ===
-                                                'cached'
-                                            ) {
-
-                                                const cacheStatus =
-                                                    document.getElementById(
-                                                        'cache-status'
-                                                    );
-
-
-                                                if (cacheStatus) {
-
-                                                    cacheStatus.style.display =
-                                                        'block';
-
-                                                }
-
-                                            }
-
-                                        }
-                                    );
-
-                            },
-                            function(error) {
-
-                                console.log(
-                                    'ack, error with serviceworker! ',
-                                    error
-                                );
-
-                            }
-                        );
-
-                }
-            );
-
-        }
-
-    </script>
-
-
-
-    <!-- UPDATE POPUP LOGIC -->
-
-    <script>
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            function () {
-
-
-                if (
-                    !localStorage.getItem(
-                        'v10-update'
-                    )
-                ) {
-
-                    document.getElementById(
-                        'blackout'
-                    ).style.display =
-                        'block';
-
-
-                    document.getElementById(
-                        'updPopup'
-                    ).style.display =
-                        'block';
-
-
-                    localStorage.setItem(
-                        'v10-update',
-                        'true'
-                    );
-
-                }
-
-
-                document.getElementById(
-                    'updConfirm'
-                ).addEventListener(
-                    'click',
-                    function () {
-
-                        document.getElementById(
-                            'blackout'
-                        ).style.display =
-                            'none';
-
-
-                        document.getElementById(
-                            'updPopup'
-                        ).style.display =
-                            'none';
-
-                    }
-                );
-
-            }
-        );
-
-    </script>
-
-
-
-    <!-- TYPEWRITER -->
-
-    <script>
-
-        const text =
-            "midnight";
-
-
-        const typingDelay =
-            500;
-
-
-        const initialDelay =
-            100;
-
-
-        const cursor =
-            document.getElementById(
-                "cursor"
-            );
-
-
-        const h1 =
-            document.querySelector(
-                ".typewriter"
-            );
-
-
-        function type() {
-
-            setTimeout(
-                () => {
-
-                    for (
-                        let i = 0;
-                        i < text.length;
-                        i++
-                    ) {
-
-                        setTimeout(
-                            () => {
-
-                                h1.textContent +=
-                                    text[i];
-
-
-                                if (
-                                    i ===
-                                    text.length - 1
-                                ) {
-
-                                    cursor.style.display =
-                                        "none";
-
-                                }
-
-                            },
-                            i * typingDelay
-                        );
-
-                    }
-
-                },
-                initialDelay
-            );
-
-        }
-
-
-        type();
-
-    </script>
-
-
-
-    <!-- OPEN BLANK -->
-
-    <script>
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            function() {
-
-
-                var openBlankLink =
-                    document.getElementById(
-                        'openBlankLink'
-                    );
-
-
-                openBlankLink.addEventListener(
-                    'click',
-                    function(event) {
-
-                        event.preventDefault();
-
-
-                        var newTab =
-                            window.open(
-                                'about:blank',
-                                '_blank'
-                            );
-
-
-                        if (newTab) {
-
-
-                            var newTabBody =
-                                newTab.document.body;
-
-
-                            newTabBody.style.padding =
-                                '0';
-
-
-                            newTabBody.style.margin =
-                                '0';
-
-
-                            newTabBody.style.border =
-                                'hidden';
-
-
-                            var iframe =
-                                document.createElement(
-                                    'iframe'
-                                );
-
-
-                            iframe.src =
-                                window.location.href;
-
-
-                            iframe.style.width =
-                                '100%';
-
-
-                            iframe.style.height =
-                                '100%';
-
-
-                            iframe.style.border =
-                                'hidden';
-
-
-                            iframe.onload =
-                                function() {
-
-
-                                    var links =
-                                        iframe
-                                            .contentDocument
-                                            .querySelectorAll(
-                                                'a[target="_blank"]'
-                                            );
-
-
-                                    links.forEach(
-                                        function(link) {
-
-                                            link.addEventListener(
-                                                'click',
-                                                function(event) {
-
-                                                    event.preventDefault();
-
-
-                                                    iframe
-                                                        .contentWindow
-                                                        .location
-                                                        .href =
-                                                        link.href;
-
-                                                }
-                                            );
-
-                                        }
-                                    );
-
-                                };
-
-
-                            newTab.document.body
-                                .appendChild(
-                                    iframe
-                                );
-
-
-                        } else {
-
-                            alert(
-                                "couldn't manage to open a new tab :("
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-    </script>
-
-
-
-    <!-- EXISTING SITE SCRIPTS -->
-
-    <script src="storage/js/cloak.js"></script>
-
-    <script src="storage/js/theme.js"></script>
-
-    <script src="storage/js/cookie.js"></script>
-
+        <div class="status">
+            <span class="status-dot"></span>
+            WEBSITE STATUS: OFFLINE
+        </div>
+
+        <div class="case">
+            CASE REF: MIDNIGHT-010
+        </div>
+
+    </main>
 
 </body>
 </html>
+```
